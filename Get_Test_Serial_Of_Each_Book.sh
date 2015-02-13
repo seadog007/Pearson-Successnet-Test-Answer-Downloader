@@ -1,5 +1,5 @@
-ISBN=$1
-SID=$2
+SID=$1
+ISBN=$2
 while read line
 do
 
@@ -18,5 +18,7 @@ curl -s 'https://www.pearsonsuccessnet.com/snpapp/ois/DPSearchTestAction.do' \
 	 | grep -A20 'select name="testTypeOID"' \
 	 | sed 's/\t//g' \
 	 | grep '<option value="\(.*\)">' \
-	 | sed 's/<option value="\(.*\)">.*/\1/g' \
+	 | sed 's/<option value="\(.[^"]*\)".*/\1/g' \
 	 | sed -n '2,$p')
+
+
