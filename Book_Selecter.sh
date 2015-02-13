@@ -1,5 +1,6 @@
 #!/bin/bash
 
+SID=$1
 cmd=(dialog --separate-output --checklist "Select options:" 22 76 16)
 options=()
 while read line; do
@@ -8,12 +9,14 @@ while read line; do
 	options+=(off)
 done < <(\
 curl -s 'https://www.pearsonsuccessnet.com/snpapp/ois/DPSearchTestAction.do' \
-	-H 'Cookie: SNSESSIONID=kiZFqFeJk0x4R99ZhnIywX5ijIczKl3Ou5gFNyWREPobO1iVAGg0!1325861998' \
-	| grep -B30 'testTypeOID' | grep option | sed -e '1d' -e '$d' -e 's/\t//g')
+	-H "Cookie: SNSESSIONID=$SID" \
+	| grep -B30 'testTypeOID' \
+	| grep option \
+	| sed -e '1d' -e '$d' -e 's/\t//g')
 echo ${options[*]}
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
 for choice in $choices
 do
-	echo $choice
+	./Get_Test_Serial_Of_Each_Book.sh $SID $choice
 done
