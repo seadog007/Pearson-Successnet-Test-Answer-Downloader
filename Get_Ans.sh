@@ -1,4 +1,6 @@
 #/bin/bash
 SID=$1
+echo "" > tmp
 ./Book_Selecter.sh $SID
-#Down
+./Downloader.sh $SID
+rm tmp
