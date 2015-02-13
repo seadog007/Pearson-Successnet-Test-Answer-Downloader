@@ -2,7 +2,6 @@ SID=$1
 ISBN=$2
 while read line
 do
-
 	[ "$line" == "MT" ] && continue
 	curl -s 'https://www.pearsonsuccessnet.com/snpapp/ois/DPSearchTestAction.do' \
 		 -H "Cookie: SNSESSIONID=$SID" \

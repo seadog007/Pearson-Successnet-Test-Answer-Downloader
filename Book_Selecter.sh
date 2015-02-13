@@ -18,5 +18,5 @@ choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 clear
 for choice in $choices
 do
-	./Get_Test_Serial_Of_Each_Book.sh $SID $choice >> tmp
+	./Get_Test_Serial_Of_Each_Book.sh $SID $choice > tmp
 done
