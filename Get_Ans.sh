@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 SID=$1
 [ -z $1 ] && echo "Please enter the Session ID." && exit 1
 rm tmp

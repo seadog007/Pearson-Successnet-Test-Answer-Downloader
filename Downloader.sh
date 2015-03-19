@@ -1,3 +1,4 @@
+#!/bin/bash
 SID=$1
 while read line
 do

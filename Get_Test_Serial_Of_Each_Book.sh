@@ -1,3 +1,4 @@
+#!/bin/bash
 SID=$1
 ISBN=$2
 while read line
